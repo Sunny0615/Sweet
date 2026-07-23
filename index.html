@@ -46,8 +46,14 @@ button {
 
 /* 主页面 */
 #main {
-    display: none;
-    margin-top: 100px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg,#ff9a9e,#fad0c4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 h1 {
@@ -85,10 +91,10 @@ h1 {
 
 <!-- 💖 主页面 -->
 <div id="main">
-    <h1>❤️ 我喜欢你 ❤️</h1>
-    <p>❤️ 遇见你，是我最幸运的事情 ❤️</p>
+    <h1>❤️ 我喜欢你宝宝 ❤️</h1>
+    <p>❤️ 遇见你，是我最幸运的事情！ ❤️</p>
     <div class="time" id="loveTime"></div>
-    <p>❤️ 小狗会爱小宝一辈子 ❤️</p>
+    <p>❤️ 小狗会爱小宝一辈子嘟 ❤️</p>
 </div>
 
 <script>
@@ -119,7 +125,7 @@ function updateTime(){
     var s = Math.floor(diff / 1000) % 60;
 
     document.getElementById("loveTime").innerHTML =
-        "我们已经在一起 " + d + " 天 " + h + " 小时 " + m + " 分 " + s + " 秒 ❤️";
+        "我们已经在一起 " + d + " 天 " + h + " 小时 " + m + " 分 " + s + " 秒啦 ❤️";
 }
 setInterval(updateTime,1000);
 
