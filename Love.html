@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>只属于我们的秘密 ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: black;
+    overflow: hidden;
+    font-family: "微软雅黑";
+    text-align: center;
+    color: white;
+}
+
+/* 登录层 */
+#login {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg,#ff9a9e,#fad0c4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+input {
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: none;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    background: white;
+    color: #ff6b81;
+    cursor: pointer;
+}
+
+/* 主页面 */
+#main {
+    display: none;
+    margin-top: 100px;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+.time {
+    margin-top: 20px;
+    font-size: 22px;
+}
+
+/* 爱心 */
+.heart {
+    position: absolute;
+    color: red;
+    font-size: 20px;
+    animation: fall 3s linear forwards;
+}
+
+@keyframes fall {
+    0% {transform: translateY(0) scale(1);}
+    100% {transform: translateY(800px) scale(0.5); opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🔐 登录 -->
+<div id="login">
+    <h2>输入我们的秘密 ❤️</h2>
+    <input type="password" id="pwd" placeholder="请输入密码">
+    <button onclick="checkPwd()">进入</button>
+</div>
+
+<!-- 💖 主页面 -->
+<div id="main">
+    <h1>❤️ 我喜欢你 ❤️</h1>
+    <p>遇见你，是我最幸运的事情</p>
+    <div class="time" id="loveTime"></div>
+    <p>点屏幕，会掉爱心哦 ❤️</p>
+</div>
+
+<script>
+// ====== 👉 修改这里 ======
+var PASSWORD = "0710";   // 改成你们的密码
+var startDate = new Date("2026-07-10"); // 在一起日期
+// ========================
+
+// 🔐 验证密码
+function checkPwd(){
+    var input = document.getElementById("pwd").value;
+    if(input === PASSWORD){
+        document.getElementById("login").style.display = "none";
+        document.getElementById("main").style.display = "block";
+    } else {
+        alert("密码不对哦，再想想 ❤️");
+    }
+}
+
+// ⏱ 计时
+function updateTime(){
+    var now = new Date();
+    var diff = now - startDate;
+
+    var d = Math.floor(diff / 1000 / 60 / 60 / 24);
+    var h = Math.floor(diff / 1000 / 60 / 60) % 24;
+    var m = Math.floor(diff / 1000 / 60) % 60;
+    var s = Math.floor(diff / 1000) % 60;
+
+    document.getElementById("loveTime").innerHTML =
+        "我们已经在一起 " + d + " 天 " + h + " 小时 " + m + " 分 " + s + " 秒 ❤️";
+}
+setInterval(updateTime,1000);
+
+// ❤️ 点击掉爱心
+document.addEventListener("click", function(e){
+    var heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+
+    heart.style.left = e.clientX + "px";
+    heart.style.top = e.clientY + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{heart.remove();},3000);
+});
+</script>
+
+</body>
+</html>
